@@ -5,8 +5,8 @@
 package xhttp
 
 import (
-    "net/http"
-    "io/ioutil"
+	"io/ioutil"
+	"net/http"
 )
 
 /*
@@ -16,19 +16,19 @@ import (
  * @return  error   error
  */
 func Get(u string) ([]byte, error) {
-    response, err := http.Get(u)
+	response, err := http.Get(u)
 
-    if err != nil {
-        return []byte(""), err
-    }
+	if err != nil {
+		return []byte(""), err
+	}
 
-    defer response.Body.Close()
+	defer response.Body.Close()
 
-    body, err := ioutil.ReadAll(response.Body)
+	body, err := ioutil.ReadAll(response.Body)
 
-    if err != nil {
-        return []byte(""), err
-    }
+	if err != nil {
+		return []byte(""), err
+	}
 
-    return body, nil
+	return body, nil
 }
